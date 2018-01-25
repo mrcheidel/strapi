@@ -7,8 +7,11 @@
 	
 ## Install StrAPI 
 
+
 	chmod 777 install_strapi.sh
-	./install_strapi.
+	./install_strapi.sh
+	
+Note: **leave all the default values**
 	
 ## Open Browser  
 
