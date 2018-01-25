@@ -19,4 +19,4 @@ Note: **leave all the default values**
 	
 ## +Info:
 
-	# https://strapi.io/
+https://strapi.io/
