@@ -1,0 +1,44 @@
+# https://strapi.io/
+# Using Ubuntu on Docker
+# I've a docker container called "ubuntu" 
+
+# Enter in the shell console
+docker run -it ubuntu /bin/bash
+
+
+
+# install NPM 
+apt-get update
+apt-get install -y npm
+
+# install Nodejs and dependencies
+apt-get install -y curl
+curl -sL https://deb.nodesource.com/setup_8.x | bash
+apt-get install -y nodejs
+
+apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv EA312927
+echo "deb http://repo.mongodb.org/apt/ubuntu xenial/mongodb-org/3.2 multiverse" | tee /etc/apt/sources.list.d/mongodb-org-3.2.list
+apt-get update
+apt-get install -y mongodb-org
+apt-get install -y nano
+nano /etc/systemd/system/mongodb.service
+
+# Paste the follow lines and save the file mongodb.service (Crl-X + "Y")
+
+[Unit]
+Description=High-performance, schema-free document-oriented database
+After=network.target
+
+[Service]
+User=mongodb
+ExecStart=/usr/bin/mongod --quiet --config /etc/mongod.conf
+
+[Install]
+WantedBy=multi-user.target
+
+# Start the MongoDb Service
+mkdir /data
+cd data
+mkdir /db
+mongod --dbpath=/data/db
+
